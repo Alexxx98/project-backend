@@ -1,1 +1,9 @@
-
+name: backend-actions
+on: [push]
+jobs:
+  check-code:
+  runs-on: ubuntu-latest
+  steps:
+      uses: actions/checkout@v3
+    - run: pip install -r requirements.txt
+    - run: pylint app.py
