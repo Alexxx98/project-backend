@@ -1,9 +1,10 @@
-name: backend-actions
+name: Backend Actions
 on: [push]
 jobs:
   check-code:
-  runs-on: ubuntu-latest
-  steps:
-      uses: actions/checkout@v3
-    - run: pip install -r requirements.txt
-    - run: pylint app.py
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check app code
+        uses: actions/checkout@v3
+      - run: pip install -r requirements.txt
+      - run: pylint app.py
