@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
+        run: heroku git:remote -a biaawc-web-app
 
       - name: Setup Python
         uses: actions/setup-python@v2
