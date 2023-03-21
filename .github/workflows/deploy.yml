@@ -28,7 +28,7 @@ jobs:
         with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_app_name: biaawc-web-app
-          heroku_email: alexander.coding.pres@gmail.com
+          heroku_email: alexander.pres.coding@gmail.com
           buildpacks: python
           app_dir: .
 
