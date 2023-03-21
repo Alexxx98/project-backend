@@ -1,33 +1,22 @@
-name: Deploy to Heroku
+name: Deploy
 
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v2
+      - name: Install packages
+        run: npm install
+      - name: Build project
+        run: npm run-script build
+      - uses: akhileshns/heroku-deploy@v3.12.12
         with:
-          python-version: '3.10'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.d1407bd8-1026-4388-aa6e-de5672c2c268 }}
-          heroku_app_name: biaawc-web-app
-          heroku_email: alexander.pres.coding@gmail.com
-          buildpacks: python
-          app_dir: project-backend
+          heroku_api_key: ${{secrets.d1407bd8-1026-4388-aa6e-de5672c2c268}}
+          heroku_app_name: ${{secrets.biaawc-web-app}
+          heroku_email: ${{secrets.alexander.pres.coding@gmail.com}}
+          procfile: 'web: npm start'
