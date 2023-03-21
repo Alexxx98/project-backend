@@ -12,7 +12,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        run: heroku git:remote -a biaawc-web-app
 
       - name: Setup Python
         uses: actions/setup-python@v2
@@ -25,11 +24,13 @@ jobs:
           pip install -r requirements.txt
 
       - name: Deploy to Heroku
-        uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: "biaawc-web-app"
-          heroku_email: "alexander.pres.coding@gmail.com"
-          buildpacks: "python"
-          app_dir: "project-backend"
+        steps:
+        - run: heroku git:remote -a biaawc-web-app
+        - uses: akhileshns/heroku-deploy@v3.12.12
+          with:
+            heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+            heroku_app_name: "biaawc-web-app"
+            heroku_email: "alexander.pres.coding@gmail.com"
+            buildpacks: "python"
+            app_dir: "project-backend"
 
