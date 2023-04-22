@@ -42,4 +42,4 @@ def download():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    app.run(port=8001)
+    app.run(debug=True, port=8001)
