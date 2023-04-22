@@ -1,0 +1,23 @@
+.container {
+    text-align: center;
+}
+
+#url {
+    text-align: center;
+    width: 750px;
+}
+
+#btn {
+    width: 150px;
+}
+
+#msg {
+    text-align: center;
+}
+
+#res {
+    text-align: center;
+    height: 36px;
+    width: 150px;
+    border-width: 5;
+}
