@@ -23,7 +23,7 @@ def home():
         except:
             flash("Wrong URL!", category='danger')
             return render_template('home.html', youtube_logo=yt_logo)
-        return render_template('download.html', url=url, youtube_logo = yt_logo)
+        return render_template('download.html', url=url, youtube_logo=yt_logo)
     return render_template('home.html', youtube_logo=yt_logo)
 
 @app.route('/download', methods=['POST', 'GET'])
@@ -42,4 +42,4 @@ def download():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    app.run(debug=True, port=443, host="0.0.0.0")
+    app.run(port=33507, host="0.0.0.0")
