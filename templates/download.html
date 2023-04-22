@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <img src="{{ youtube_logo }}" alt="youtube" height="320px" width="460px">
+        <br />
+        <form action="download" method="POST">
+            <h2>{{ url.title }}</h2>
+            <br />
+            <select name="resolution" id="res">
+                {% for itag in url.streams.filter(progressive=true) %}
+                <option value="{{ itag.itag }}">{{ itag.resolution }}</option>
+                {% endfor %}
+            </select>
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-secondary" id="btn">Download</button>
+        </form>
+    </div>
+    
+{% endblock %}

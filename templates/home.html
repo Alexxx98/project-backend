@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container">
+        <img src="{{ youtube_logo }}" alt="youtube" height="320px" width="460px">
+        <br />
+        <form method="POST">
+            <input type="text" id="url" name="url" placeholder="Paste link to the video here">
+            <br />
+            <br />
+            <button type="submit" class="btn btn-secondary" id="btn">Convert</button>
+        </form>
+    </div>
+    
+{% endblock content %}
