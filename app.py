@@ -2,14 +2,19 @@ from flask import Flask, render_template, request, session, flash, redirect, sen
 from pytube import YouTube
 from io import BytesIO
 import os
+from flask_debugtoolbar import DebugToolbarExtension
 
 
 PHOTO_FOLDER = os.path.join("static", "images")
 
 app = Flask(__name__)
 
+app.debug = True
+
 app.config["UPLOAD_FOLDER"] = PHOTO_FOLDER
-app.config["SECRET_KEY"] = "some_secret_key"
+app.config["SECRET_KEY"] = "Define_The_Key"
+
+toolbar = DebugToolbarExtension(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -42,4 +47,4 @@ def download():
     return redirect(url_for('home'))
 
 if __name__ == "__main__":
-    app.run(port=33507, host="0.0.0.0")
+    app.run(debug=True, port=33507, host="0.0.0.0")
